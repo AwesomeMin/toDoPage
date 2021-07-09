@@ -5,17 +5,8 @@ const NextButton = document.querySelector("#nextButton");
 const DateSelector = document.querySelector("#DateSelector")
 
 let date = new Date();
-let years = date.getFullYear();
-let months = date.getMonth() + 1;
-let days = date.getDay();
-let datee = date.getDate();
 
 function handleDateSelector(event) {
-    // years = event.target.value.split("-")[0];
-    // months = event.target.value.split("-")[1];
-    // datee = event.target.value.split("-")[2];
-    // days = event.target.valueAsDate.getDay();
-    // displayDate();
     date.setFullYear(parseInt(event.target.value.split("-")[0]));
     date.setMonth(parseInt(event.target.value.split("-")[1]) - 1);
     date.setDate(parseInt(event.target.value.split("-")[2]));

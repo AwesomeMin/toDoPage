@@ -6,8 +6,10 @@ let toDos = [];
 
 function handleCbox(event) {
     const li = event.target.parentElement;
-    const text = event.path[1].children[0];
-    text.classList.toggle("done");
+    const title = event.path[1].children[0];
+    const content = event.path[1].children[3];
+    title.classList.toggle("done");
+    content.classList.toggle("done");
     toDos.forEach(toDo => {
         if(toDo.id === parseInt(li.id) && event.target.checked) {
             toDo.done = 1;
@@ -44,6 +46,7 @@ function addNewToDo(obj) {
     cbox.addEventListener("click", handleCbox);
     if(obj.done === 1) {
         title.classList.add("done");
+        content.classList.add("done");
         cbox.checked = true;
     }
     li.appendChild(title);
