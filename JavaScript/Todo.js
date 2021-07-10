@@ -2,10 +2,28 @@ const toDoForm = document.querySelector("#ToDoForm");
 const titleInput = toDoForm.querySelector("#TitleInput");
 const contentInput = toDoForm.querySelector("#ContentInput")
 const toDoList = document.querySelector("ul");
+const achieveDegreeIndicator = document.querySelector("#achieveDegree");
 let toDos = [];
 
+function calculateDegree() {
+    let achieveDegree = 0;
+    let totalDegree = 0;
+    let lengthOfToDos = 0;
+    toDos.forEach(toDo => {
+        if(toDo.date === DateDisplay.innerText) {
+            lengthOfToDos = lengthOfToDos + 1;
+            totalDegree = totalDegree + toDo.degree;
+        }
+    })
+    achieveDegree = totalDegree/lengthOfToDos;
+    if(isNaN(achieveDegree)) {
+        achieveDegreeIndicator.innerText = "아직 이 날의 일정이 없습니다.";
+    } else {
+        achieveDegreeIndicator.innerText = `${achieveDegree}%`;
+    }
+}
+
 function handleChangeDegree(event) {
-    console.log(event.target.parentElement.children);
     event.target.parentElement.children[3].classList.remove("hidden");
     event.target.parentElement.children[4].classList.add("hidden");
     toDos.forEach(toDo => {
@@ -30,8 +48,9 @@ function handleDegree(event) {
     saveToDos();
     event.target.classList.add("hidden");
     degreeText.classList.remove("hidden");
-    degreeText.innerText = `${event.target.value}%`
+    degreeText.innerText = ` ${event.target.value}%`
     event.path[1].insertBefore(degreeText, event.path[1].children[5]);
+    calculateDegree();
 }
 
 function handleCbox(event) {
@@ -66,6 +85,7 @@ function deleteToDo(event) {
     li.remove();
     toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
     saveToDos();
+    calculateDegree();
 }
 
 function addNewToDo(obj) {
@@ -126,6 +146,7 @@ function handleInputForm(event) {
     contentInput.value = "";
     toDos.push(newToDoObject);
     saveToDos();
+    calculateDegree();
 }
 
 toDoForm.addEventListener("submit", handleInputForm);
@@ -136,4 +157,7 @@ if(savedTodos !== null) {
     const parsedToDos = JSON.parse(savedTodos);
     toDos = parsedToDos;
     parsedToDos.forEach(addNewToDo);
+    parsedToDos.forEach(changeDate);
 }
+
+calculateDegree();

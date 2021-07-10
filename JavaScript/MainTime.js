@@ -25,6 +25,7 @@ function changeDate(obj) {
     } else {
         li.classList.add("hidden");
     }
+    calculateDegree();
 }
 
 function handlePrevButton() {
