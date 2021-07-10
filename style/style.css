@@ -6,3 +6,25 @@
 .hidden {
     display: none;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+#Date {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#prevButton, #nextButton {
+    border: none;
+    background-color: white;
+}
