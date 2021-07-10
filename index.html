@@ -8,20 +8,40 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <div id="MainTime">
-        <button id="prevButton">previous</button>
-        <h1 id="Date"></h1>
-        <button id="nextButton">next</button>
+    <div id="MainTime" class="container">
+        <div class="item">
+            <button id="prevButton"><img src="img/leftPointingTriangle.png" width="30" height="30"></button>
+        </div>
+        <div class="item">
+            <h1 id="Date"></h1>
+        </div>
+        <div class="item">
+            <button id="nextButton"><img src="img/rightPointingTriangle.png" width="30" height="30"></button>
+        </div>
+    </div>
+    <div class="container">
         <input type="date" id="DateSelector">
     </div>
-    <div id='calendar'></div>
+    <div class="container">
+        <h1 id="achieveDegree"></h1>
+    </div>
     <form id="ToDoForm">
-        <input type="text" placeholder="Title" required id="TitleInput"><br>
-        <input type="text" placeholder="Content" id="ContentInput"><br>
-        <input type="submit" placeholder="" value="확인">
+        <div>
+            <div class="container">
+                <input type="text" placeholder="Title (필수)" required id="TitleInput">
+            </div>
+            <div class="container">
+                <input type="text" placeholder="Content (선택)" id="ContentInput">
+            </div>
+            <div class="container">
+                <input type="submit" placeholder="" value="확인">
+            </div>
+        </div>
     </form>
-    <ul>
-    </ul>
+    <div class="container">
+        <ul>
+        </ul>
+    </div>
     <script src="JavaScript/MainTime.js"></script>
     <script src="JavaScript/Todo.js"></script>
 </body>
