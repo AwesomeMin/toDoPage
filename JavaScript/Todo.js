@@ -36,21 +36,24 @@ function handleChangeDegree(event) {
 
 function handleDegree(event) {
     const degreeText = event.target.parentElement.children[4];
-    if (event.target.value > 100 || event.target.value < 0) {
-        event.target.value = null;
+    const targetValue = parseInt(event.target.value);
+    if (targetValue > 100 || targetValue < 0 || targetValue == '') {
+        targetValue = null;
         alert("1과 100 사이의 숫자를 입력해주세요.");
     }
+    else {
     toDos.forEach(toDo => {
         if (toDo.id === parseInt(event.target.parentElement.id)) {
-            toDo.degree = parseInt(event.target.value);
+            toDo.degree = parseInt(targetValue);
         }
     })
     saveToDos();
     event.target.classList.add("hidden");
     degreeText.classList.remove("hidden");
-    degreeText.innerText = ` ${event.target.value}%`
+    degreeText.innerText = ` ${targetValue}%`
     event.path[1].insertBefore(degreeText, event.path[1].children[5]);
     calculateDegree();
+    }
 }
 
 function handleCbox(event) {
