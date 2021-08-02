@@ -37,7 +37,7 @@ function handleChangeDegree(event) {
 function handleDegree(event) {
     const degreeText = event.target.parentElement.children[4];
     const targetValue = parseInt(event.target.value);
-    if (targetValue > 100 || targetValue < 0 || targetValue == '') {
+    if (targetValue > 100 || targetValue < 0 || targetValue == '' || isNaN(targetValue)) {
         targetValue = null;
         alert("1과 100 사이의 숫자를 입력해주세요.");
     }
