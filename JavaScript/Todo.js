@@ -24,11 +24,13 @@ function calculateDegree() {
 }
 
 function handleChangeDegree(event) {
+    console.log(event);
     event.target.parentElement.children[3].classList.remove("hidden");
     event.target.parentElement.children[4].classList.add("hidden");
     toDos.forEach(toDo => {
         if (toDo.id === parseInt(event.target.parentElement.id)) {
             toDo.degree = 0;
+            calculateDegree();
         }
     })
     saveToDos();
@@ -36,7 +38,7 @@ function handleChangeDegree(event) {
 
 function handleDegree(event) {
     const degreeText = event.target.parentElement.children[4];
-    const targetValue = parseInt(event.target.value);
+    let targetValue = parseInt(event.target.value);
     if (targetValue > 100 || targetValue < 0 || targetValue == '' || isNaN(targetValue)) {
         targetValue = null;
         alert("1과 100 사이의 숫자를 입력해주세요.");
